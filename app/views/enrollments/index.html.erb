@@ -1,2 +1,36 @@
-<h1>Enrollments#index</h1>
-<p>Find me in app/views/enrollments/index.html.erb</p>
+<h1><%= @course.name %> Enrollments</h1>
+<%= link_to 'Add Enrollment', new_course_enrollment_path(@course) %>
+<hr>
+
+<h2>Teacher</h2>
+<ul>
+  <% @teacher.each do |t| %>
+    <li>
+      <%= t.user.full_name %>
+      <br>
+      <%= link_to 'Remove', course_enrollment_path(@course, t), method: :delete %>
+    </li>
+  <% end %>
+</ul>
+
+<h2>Ta</h2>
+<ul>
+  <% @ta.each do |a| %>
+    <li>
+      <%= a.user.full_name %>
+      <br>
+      <%= link_to 'Remove', course_enrollment_path(@course, a), method: :delete %>
+    </li>
+  <% end %>
+</ul>
+
+<h2>Student</h2>
+<ul>
+  <% @student.each do |s| %>
+    <li>
+      <%= s.user.full_name %>
+      <br>
+      <%= link_to 'Remove', course_enrollment_path(@course, s), method: :delete %>
+    </li>
+  <% end %>
+</ul>
